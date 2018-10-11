@@ -9,14 +9,6 @@ import sys
 def get_episode_data(url, num_episodes):
     episodes = []
     try:
-        num_episodes = int(num_episodes)
-        if num_of_episodes < 1:
-            print('Please enter a number greater than 0')
-            sys.exit(1)
-    except ValueError:
-        print('Please enter a number of episodes to download')
-        sys.exit(1)
-    try:
         session = XMLSession()
         r = session.get(url)
         items = r.xml.xpath('//item')
@@ -30,7 +22,7 @@ def get_episode_data(url, num_episodes):
         print('Enter Valid URL')
     except (lxml.etree.XMLSyntaxError):
         print('Not a valid podcast feed')
-    return episodes[0:num_episodes]
+    return episodes[0:get_num_episodes(num_episodes)]
 
 # Function to convert episode title to usable filename
 def convert_title(title):
@@ -55,31 +47,16 @@ def download_podcast_library(episodes):
                 print('downloaded: ' + filename)
     return filename
 
-# Test Code
-num_of_episodes = 1
-
-# Valid Podcast Feed Link
-podcast_url = 'http://feeds.everythingisalive.com/everythingisalive'
-
-# Good URL but not podcast feed
-# podcast_url = 'http://www.google.com'
-
-# Invalid URL
-# podcast_url = 'hello'
-
-podcast_url2 = 'http://feeds.feedburner.com/mbmbam'
-
-data = get_episode_data(podcast_url, num_of_episodes)
-data2 = get_episode_data(podcast_url2, num_of_episodes)
-
-
-library = download_podcast_library(data)
-
-
 '''
 Still need to separate num_episodes from get episode data function
 function is doing too much
 '''
 
-def get_num_episodes(num):
-    pass
+def get_num_episodes(num_episodes):
+    try:
+        num_episodes = int(num_episodes)
+        if num_episodes < 1:
+            print('Please enter a number greater than 0')
+    except ValueError:
+        print('Please enter a number of episodes to download')
+    return num_episodes
