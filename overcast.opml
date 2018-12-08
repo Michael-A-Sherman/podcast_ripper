@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<opml version="1.0">
+    <head>
+        <title>Overcast Podcast Subscriptions</title>
+    </head>
+<body>
+    <outline type="rss" text="Reply All" title="Reply All" xmlUrl="http://feeds.gimletmedia.com/hearreplyall" htmlUrl="http://gimletmedia.com/shows/reply-all"/>
+    <outline type="rss" text="Crimetown" title="Crimetown" xmlUrl="http://feeds.gimletmedia.com/crimetownshow" htmlUrl="https://www.gimletmedia.com/show/crimetown"/>
+    
+</body>
+</opml>
